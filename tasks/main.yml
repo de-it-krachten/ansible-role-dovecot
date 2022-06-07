@@ -36,14 +36,14 @@
   replace:
     path: "{{ item.value.path }}"
     regexp: "^( *)(#)?{{ item.value.var }} =.*"
-    replace: "\\1{{ item.value.var }} = {{ item.value.value if item.value.value is string else item.value.value|join(':') }}"
+    replace: "\\1{{ item.value.var }} = {{ (item.value.value|join(':')) if item.value.value|type_debug == 'list' else item.value.value }}"
   with_dict: "{{ dovecot_settings | combine(dovecot_settings_overwrite, recursive=True) }}"
   notify: Restart dovecot
 
 - name: Configuring dovecot configuration (add lines)
   lineinfile:
     path: "{{ item.value.path }}"
-    line: "{{ item.value.var }} = {{ item.value.value if item.value.value is string else item.value.value|join(':') }}"
+    line: "{{ item.value.var }} = {{ item.value.value|join(':')) if item.value.value|type_debug == 'list' else item.value.value }}"
   with_dict: "{{ dovecot_settings | combine(dovecot_settings_overwrite, recursive=True) }}"
   notify: Restart dovecot
 

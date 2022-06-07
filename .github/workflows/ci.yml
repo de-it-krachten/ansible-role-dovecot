@@ -32,11 +32,6 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Set-up SSH agent
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: |
-            ${{ secrets.DEPLOYKEY_POSTFIX }}
 
       - name: Show runner info
         run: |
@@ -90,11 +85,6 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Set-up SSH agent
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: |
-            ${{ secrets.DEPLOYKEY_POSTFIX }}
 
       - name: Show runner info
         run: |
