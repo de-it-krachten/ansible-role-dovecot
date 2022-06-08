@@ -1,0 +1,15 @@
+---
+
+dovecot_packages:
+  - dovecot
+  - dovecot-pigeonhole
+  - mailx
+
+dovecot_service: dovecot
+
+dovecot_fw_ports:
+  - { port: 993, proto: tcp }
+
+dovecot_conf_dir: /etc/dovecot
+dovecot_confd_dir: "{{ dovecot_conf_dir }}/conf.d"
+dovecot_config: "{{ dovecot_conf_dir }}/dovecot.conf"
