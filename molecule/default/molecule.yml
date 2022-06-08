@@ -10,13 +10,13 @@ lint: |
   ansible-lint
 platforms:
 
-  - name: dovecot-centos7
-    image: "geerlingguy/docker-centos7-ansible:latest"
+  - name: dovecot-rockylinux8
+    image: "geerlingguy/docker-rockylinux8-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
+    privileged: True
+    pre_build_image: True
 
 provisioner:
   name: ansible
@@ -28,8 +28,6 @@ provisioner:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
   inventory:
     host_vars:
-      dovecot-centos7:
-        ansible_python_interpreter: /usr/bin/python
       dovecot-rockylinux8:
         ansible_python_interpreter: /usr/libexec/platform-python
 scenario:

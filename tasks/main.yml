@@ -32,19 +32,30 @@
   command: openssl dhparam -out {{ dovecot_conf_dir }}/dh2048.pem 2048
   when: not dh2048.stat.exists
 
+- name: Configuring dovecot configuration (delete lines)
+  lineinfile:
+    path: "{{ item.value.path }}"
+    state: absent
+    regexp: "^( *){{ item.value.var }} =.*"
+  with_dict: "{{ dovecot_settings | combine(dovecot_settings_overwrite, recursive=True) }}"
+  when: item.value.state is defined and item.value.state == 'absent'
+  notify: Restart dovecot
+
 - name: Configuring dovecot configuration (replace lines)
   replace:
     path: "{{ item.value.path }}"
     regexp: "^( *)(#)?{{ item.value.var }} =.*"
     replace: "\\1{{ item.value.var }} = {{ (item.value.value|join(':')) if item.value.value|type_debug == 'list' else item.value.value }}"
   with_dict: "{{ dovecot_settings | combine(dovecot_settings_overwrite, recursive=True) }}"
+  when: item.value.state is undefined or item.value.state == 'present'
   notify: Restart dovecot
 
 - name: Configuring dovecot configuration (add lines)
   lineinfile:
     path: "{{ item.value.path }}"
-    line: "{{ item.value.var }} = {{ item.value.value|join(':')) if item.value.value|type_debug == 'list' else item.value.value }}"
+    line: "{{ item.value.var }} = {{ (item.value.value|join(':')) if item.value.value|type_debug == 'list' else item.value.value }}"
   with_dict: "{{ dovecot_settings | combine(dovecot_settings_overwrite, recursive=True) }}"
+  when: item.value.state is undefined or item.value.state == 'present'
   notify: Restart dovecot
 
 - name: 10-master.conf | Insert smtp-auth
