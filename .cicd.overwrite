@@ -7,9 +7,6 @@ generic:
   role_description: |
     Installs & configures Dovecot
 
-github:
-  fail_fast: false
-
 molecule:
   converge:
     roles:
