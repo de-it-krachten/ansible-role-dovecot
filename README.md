@@ -24,8 +24,6 @@ Supported platforms
 - Ubuntu 18.04 LTS
 - Ubuntu 20.04 LTS
 - Ubuntu 22.04 LTS
-- Fedora 35
-- Fedora 36
 
 Note:
 <sup>1</sup> : no automated testing is performed on these platforms
@@ -128,12 +126,14 @@ dovecot_settings:
 dovecot_settings_overwrite: {}
 </pre></code>
 
-### vars/family-RedHat.yml
+### vars/family-Debian.yml
 <pre><code>
 dovecot_packages:
-  - dovecot
-  - dovecot-pigeonhole
-  - mailx
+  - dovecot-imapd
+  - dovecot-sieve
+  - dovecot-managesieved
+  - dovecot-lmtpd
+  - mailutils
 
 dovecot_service: dovecot
 
@@ -145,14 +145,29 @@ dovecot_confd_dir: "{{ dovecot_conf_dir }}/conf.d"
 dovecot_config: "{{ dovecot_conf_dir }}/dovecot.conf"
 </pre></code>
 
-### vars/family-Debian.yml
+### vars/family-RedHat-9.yml
 <pre><code>
 dovecot_packages:
-  - dovecot-imapd
-  - dovecot-sieve
-  - dovecot-managesieved
-  - dovecot-lmtpd
-  - mailutils
+  - dovecot
+  - dovecot-pigeonhole
+  - s-nail
+
+dovecot_service: dovecot
+
+dovecot_fw_ports:
+  - { port: 993, proto: tcp }
+
+dovecot_conf_dir: /etc/dovecot
+dovecot_confd_dir: "{{ dovecot_conf_dir }}/conf.d"
+dovecot_config: "{{ dovecot_conf_dir }}/dovecot.conf"
+</pre></code>
+
+### vars/family-RedHat-8.yml
+<pre><code>
+dovecot_packages:
+  - dovecot
+  - dovecot-pigeonhole
+  - mailx
 
 dovecot_service: dovecot
 

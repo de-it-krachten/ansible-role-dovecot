@@ -7,6 +7,14 @@ generic:
   role_description: |
     Installs & configures Dovecot
 
+platforms:
+  fedora35:
+    ci: false
+    supported: false
+  fedora36:
+    ci: false
+    supported: false
+
 molecule:
   converge:
     roles:

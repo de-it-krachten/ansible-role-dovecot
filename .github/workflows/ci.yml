@@ -105,14 +105,6 @@ jobs:
             playbook: converge.yml
             # continue_on_error: false
             # failfast: true
-          - distro: fedora35
-            playbook: converge.yml
-            # continue_on_error: false
-            # failfast: true
-          - distro: fedora36
-            playbook: converge.yml
-            # continue_on_error: false
-            # failfast: true
 
     steps:
       - name: Check out the codebase.
