@@ -7,8 +7,13 @@ generic:
   role_description: |
     Installs & configures Dovecot
 
-github:
-  fail_fast: false
+platforms:
+  fedora35:
+    ci: false
+    supported: false
+  fedora36:
+    ci: false
+    supported: false
 
 molecule:
   converge:
@@ -25,7 +30,8 @@ molecule:
       postfix_fqdn: host.example.com
       postfix_ssl_key: "{{ openssl_server_key }}"
       postfix_ssl_chain: "{{ openssl_server_crt }}"
-
-ci_templates:
-  requirements.yml:
-    force: false
+  requirements:
+    roles_extra:
+      - cron
+      - openssl
+      - postfix
