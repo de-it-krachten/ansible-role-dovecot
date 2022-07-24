@@ -2,6 +2,7 @@
 
 - name: Converge
   hosts: all
+  become: "{{ molecule['converge']['become'] | default('yes') }}"
   vars:
     dovecot_ssl_key: "{{ openssl_server_key }}"
     dovecot_ssl_chain: "{{ openssl_server_crt }}"

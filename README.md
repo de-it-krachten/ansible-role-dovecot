@@ -15,6 +15,7 @@ Supported platforms
 - Red Hat Enterprise Linux 9<sup>1</sup>
 - CentOS 7
 - RockyLinux 8
+- RockyLinux 9
 - OracleLinux 8
 - AlmaLinux 8
 - AlmaLinux 9
@@ -291,6 +292,7 @@ dovecot_settings:
 <pre><code>
 - name: sample playbook for role 'dovecot'
   hosts: all
+  become: "{{ molecule['converge']['become'] | default('yes') }}"
   vars:
     dovecot_ssl_key: "{{ openssl_server_key }}"
     dovecot_ssl_chain: "{{ openssl_server_crt }}"
