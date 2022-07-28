@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.1.0...v1.2.0) (2022-07-28)
+
+
+### Features
+
+* Implement ansible-lint v6 support ([8395270](https://github.com/de-it-krachten/ansible-role-dovecot/commit/839527038c7270320a5eb38cbe4652bce30c5005))
+
 # [1.1.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.0.0...v1.1.0) (2022-07-04)
 
 
