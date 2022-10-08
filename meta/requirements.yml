@@ -1,11 +1,11 @@
 ---
 
-- name: openssl
+- name: Openssl
   src: git@github.com:de-it-krachten/ansible-role-openssl.git
   version: dev
   scm: git
 
-- name: postfix
+- name: Postfix
   src: git@github.com:de-it-krachten/ansible-role-postfix.git
   version: dev
   scm: git

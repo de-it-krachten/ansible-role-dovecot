@@ -1,7 +1,7 @@
 ---
 
 - name: Load variables based on OS type
-  include_vars: "{{ lookup('first_found', params) }}"
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
   vars:
     params:
       files:
@@ -14,26 +14,26 @@
         - "vars"
 
 - name: Install packages
-  package:
+  ansible.builtin.package:
     name: "{{ dovecot_packages }}"
     state: present
 
 - name: Start service
-  service:
+  ansible.builtin.service:
     name: "{{ dovecot_service }}"
     enabled: yes
 
 - name: Check if DH2048 file exists
-  stat:
+  ansible.builtin.stat:
     path: "{{ dovecot_conf_dir }}/dh2048.pem"
   register: dh2048
 
-- name: Create {{ dovecot_conf_dir }}/dh2048.pem
-  command: openssl dhparam -out {{ dovecot_conf_dir }}/dh2048.pem 2048
+- name: Create dh2048.pem
+  ansible.builtin.command: openssl dhparam -out {{ dovecot_conf_dir }}/dh2048.pem 2048
   when: not dh2048.stat.exists
 
 - name: Configuring dovecot configuration (delete lines)
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: "{{ item.value.path }}"
     state: absent
     regexp: "^( *){{ item.value.var }} =.*"
@@ -42,24 +42,24 @@
   notify: Restart dovecot
 
 - name: Configuring dovecot configuration (replace lines)
-  replace:
+  ansible.builtin.replace:
     path: "{{ item.value.path }}"
     regexp: "^( *)(#)?{{ item.value.var }} =.*"
-    replace: "\\1{{ item.value.var }} = {{ (item.value.value|join(':')) if item.value.value|type_debug == 'list' else item.value.value }}"
+    replace: "\\1{{ item.value.var }} = {{ (item.value.value | join(':')) if item.value.value | type_debug == 'list' else item.value.value }}"
   with_dict: "{{ dovecot_settings | combine(dovecot_settings_overwrite, recursive=True) }}"
   when: item.value.state is undefined or item.value.state == 'present'
   notify: Restart dovecot
 
 - name: Configuring dovecot configuration (add lines)
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: "{{ item.value.path }}"
-    line: "{{ item.value.var }} = {{ (item.value.value|join(':')) if item.value.value|type_debug == 'list' else item.value.value }}"
+    line: "{{ item.value.var }} = {{ (item.value.value | join(':')) if item.value.value | type_debug == 'list' else item.value.value }}"
   with_dict: "{{ dovecot_settings | combine(dovecot_settings_overwrite, recursive=True) }}"
   when: item.value.state is undefined or item.value.state == 'present'
   notify: Restart dovecot
 
 - name: 10-master.conf | Insert smtp-auth
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: /etc/dovecot/conf.d/10-master.conf
     marker: '  # {mark} ANSIBLE MANAGED BLOCK - smtp-auth'
     insertafter: '.*# Postfix smtp-auth.*'
@@ -72,7 +72,7 @@
   notify: Restart dovecot
 
 - name: 10-master.conf | Insert lmtp
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: /etc/dovecot/conf.d/10-master.conf
     marker: '  # {mark} ANSIBLE MANAGED BLOCK - lmtp'
     insertafter: 'service lmtp {'
@@ -85,34 +85,34 @@
   notify: Restart dovecot
 
 - name: 15-lda.conf | insert protocol lda
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: /etc/dovecot/conf.d/15-lda.conf
     marker: '  # {mark} ANSIBLE MANAGED BLOCK - lda'
     insertafter: '^protocol lda {'
     block: |2
         mail_plugins = $mail_plugins sieve
-  when: dovecot_lda|bool
+  when: dovecot_lda | bool
   notify: Restart dovecot
 
 - name: 20-lmtp.conf | insert protocol lmtp
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: /etc/dovecot/conf.d/20-lmtp.conf
     marker: '  # {mark} ANSIBLE MANAGED BLOCK'
     insertafter: '^protocol lmtp {'
     block: |2
         mail_plugins = $mail_plugins sieve
-  when: dovecot_lmtp|bool
+  when: dovecot_lmtp | bool
   notify: Restart dovecot
 
 - name: 20-imap.conf | insert protocol lmtp
-  replace:
+  ansible.builtin.replace:
     path: /etc/dovecot/conf.d/20-imap.conf
     regexp: "^(  #)?mail_plugins = .*"
     replace: "  mail_plugins = $mail_plugins imap_sieve"
   notify: Restart dovecot
 
 - name: 90-sieve.conf | create from template
-  template:
+  ansible.builtin.template:
     src: 90-sieve.conf.j2
     dest: /etc/dovecot/conf.d/90-sieve.conf
     mode: "0644"
@@ -120,7 +120,7 @@
   notify: Restart dovecot
 
 - name: Configuring firewall
-  include_role:
+  ansible.builtin.include_role:
     name: firewall
   vars:
     firewall_ports: "{{ dovecot_fw_ports }}"
