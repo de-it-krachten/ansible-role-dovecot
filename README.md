@@ -6,6 +6,16 @@
 Installs & configures Dovecot
 
 
+
+## Dependencies
+
+#### Roles
+None
+
+#### Collections
+- community.general
+- with_dict
+
 ## Platforms
 
 Supported platforms
@@ -82,15 +92,15 @@ dovecot_settings:
     var: 'ssl_cipher_list'
     value:
       - 'EDH+CAMELLIA'
-      - 'EDH+aRSA'
-      - 'EECDH+aRSA+AESGCM'
-      - 'EECDH+aRSA+SHA384'
-      - 'EECDH+aRSA+SHA256'
+      - 'EDH+ aRSA'
+      - 'EECDH+ aRSA+AESGCM'
+      - 'EECDH+ aRSA+SHA384'
+      - 'EECDH+ aRSA+SHA256'
       - 'EECDH'
-      - '+CAMELLIA256'
-      - '+AES256'
-      - '+CAMELLIA128'
-      - '+AES128'
+      - ' +CAMELLIA256'
+      - ' +AES256'
+      - ' +CAMELLIA128'
+      - ' +AES128'
       - '!aNULL'
       - '!eNULL'
       - '!SSLv2'
@@ -125,6 +135,7 @@ dovecot_settings:
 # Diffentiation from defaults
 dovecot_settings_overwrite: {}
 </pre></code>
+
 
 ### vars/family-Debian.yml
 <pre><code>
@@ -240,15 +251,15 @@ dovecot_settings:
     # value: 'ALL:!LOW:!SSLv2:!EXP:!aNULL:!RC4::!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS'
     value:
       - 'EDH+CAMELLIA'
-      - 'EDH+aRSA'
-      - 'EECDH+aRSA+AESGCM'
-      - 'EECDH+aRSA+SHA384'
-      - 'EECDH+aRSA+SHA256'
+      - 'EDH+ aRSA'
+      - 'EECDH+ aRSA+AESGCM'
+      - 'EECDH+ aRSA+SHA384'
+      - 'EECDH+ aRSA+SHA256'
       - 'EECDH'
-      - '+CAMELLIA256'
-      - '+AES256'
-      - '+CAMELLIA128'
-      - '+AES128'
+      - ' +CAMELLIA256'
+      - ' +AES256'
+      - ' +CAMELLIA128'
+      - ' +AES128'
       - '!aNULL'
       - '!eNULL'
       - '!SSLv2'
@@ -304,7 +315,7 @@ dovecot_settings:
     postfix_ssl_chain: "{{ openssl_server_crt }}"
   pre_tasks:
     - name: Create 'remote_tmp'
-      file:
+      ansible.builtin.file:
         path: /root/.ansible/tmp
         state: directory
         mode: "0700"
@@ -314,6 +325,6 @@ dovecot_settings:
     - postfix
   tasks:
     - name: Include role 'dovecot'
-      include_role:
+      ansible.builtin.include_role:
         name: dovecot
 </pre></code>

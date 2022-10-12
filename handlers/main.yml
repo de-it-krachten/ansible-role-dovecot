@@ -1,6 +1,6 @@
 ---
 
 - name: Restart dovecot
-  service:
+  ansible.builtin.service:
     name: "{{ dovecot_service }}"
     state: restarted
