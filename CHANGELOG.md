@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.2.0...v1.3.0) (2022-10-12)
+
+
+### Features
+
+* Move to FQCN ([d55a389](https://github.com/de-it-krachten/ansible-role-dovecot/commit/d55a38935925d99bc840ac57264d7699c48d4d50))
+* Update CI to latest standards ([5dca105](https://github.com/de-it-krachten/ansible-role-dovecot/commit/5dca10591a4eff39178ccda1810fde1542ac1cfe))
+
 # [1.2.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.1.0...v1.2.0) (2022-07-28)
 
 
