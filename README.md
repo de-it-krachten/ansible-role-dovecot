@@ -314,9 +314,9 @@ dovecot_settings:
     postfix_ssl_key: "{{ openssl_server_key }}"
     postfix_ssl_chain: "{{ openssl_server_crt }}"
   roles:
-    - cron
-    - openssl
-    - postfix
+    - deitkrachten.cron
+    - deitkrachten.openssl
+    - deitkrachten.postfix
   tasks:
     - name: Include role 'dovecot'
       ansible.builtin.include_role:

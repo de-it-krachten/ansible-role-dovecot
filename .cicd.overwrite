@@ -18,9 +18,9 @@ platforms:
 molecule:
   converge:
     roles:
-      - cron
-      - openssl
-      - postfix
+      - deitkrachten.cron
+      - deitkrachten.openssl
+      - deitkrachten.postfix
     vars:
       dovecot_ssl_key: "{{ openssl_server_key }}"
       dovecot_ssl_chain: "{{ openssl_server_crt }}"
@@ -32,6 +32,6 @@ molecule:
       postfix_ssl_chain: "{{ openssl_server_crt }}"
   requirements:
     roles_extra:
-      - cron
-      - openssl
-      - postfix
+      - deitkrachten.cron
+      - deitkrachten.openssl
+      - deitkrachten.postfix

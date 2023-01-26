@@ -41,15 +41,15 @@ roles:
     src: https://github.com/de-it-krachten/ansible-role-unbound.git
     version: main
     scm: git
-  - name: cron
+  - name: deitkrachten.cron
     src: https://github.com/de-it-krachten/ansible-role-cron.git
     version: main
     scm: git
-  - name: openssl
+  - name: deitkrachten.openssl
     src: https://github.com/de-it-krachten/ansible-role-openssl.git
     version: main
     scm: git
-  - name: postfix
+  - name: deitkrachten.postfix
     src: https://github.com/de-it-krachten/ansible-role-postfix.git
     version: main
     scm: git
