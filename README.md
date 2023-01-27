@@ -14,7 +14,6 @@ None
 
 #### Collections
 - community.general
-- with_dict
 
 ## Platforms
 
@@ -27,6 +26,7 @@ Supported platforms
 - RockyLinux 8
 - RockyLinux 9
 - OracleLinux 8
+- OracleLinux 9
 - AlmaLinux 8
 - AlmaLinux 9
 - Debian 10 (Buster)
@@ -303,7 +303,7 @@ dovecot_settings:
 <pre><code>
 - name: sample playbook for role 'dovecot'
   hosts: all
-  become: "{{ molecule['converge']['become'] | default('yes') }}"
+  become: "yes"
   vars:
     dovecot_ssl_key: "{{ openssl_server_key }}"
     dovecot_ssl_chain: "{{ openssl_server_crt }}"
@@ -313,16 +313,10 @@ dovecot_settings:
     postfix_fqdn: host.example.com
     postfix_ssl_key: "{{ openssl_server_key }}"
     postfix_ssl_chain: "{{ openssl_server_crt }}"
-  pre_tasks:
-    - name: Create 'remote_tmp'
-      ansible.builtin.file:
-        path: /root/.ansible/tmp
-        state: directory
-        mode: "0700"
   roles:
-    - cron
-    - openssl
-    - postfix
+    - deitkrachten.cron
+    - deitkrachten.openssl
+    - deitkrachten.postfix
   tasks:
     - name: Include role 'dovecot'
       ansible.builtin.include_role:

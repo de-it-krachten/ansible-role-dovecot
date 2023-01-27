@@ -121,6 +121,6 @@
 
 - name: Configuring firewall
   ansible.builtin.include_role:
-    name: firewall
+    name: deitkrachten.firewall
   vars:
     firewall_ports: "{{ dovecot_fw_ports }}"

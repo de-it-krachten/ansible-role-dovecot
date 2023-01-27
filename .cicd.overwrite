@@ -8,19 +8,19 @@ generic:
     Installs & configures Dovecot
 
 platforms:
-  fedora35:
+  fedora36:
     ci: false
     supported: false
-  fedora36:
+  fedora37:
     ci: false
     supported: false
 
 molecule:
   converge:
     roles:
-      - cron
-      - openssl
-      - postfix
+      - deitkrachten.cron
+      - deitkrachten.openssl
+      - deitkrachten.postfix
     vars:
       dovecot_ssl_key: "{{ openssl_server_key }}"
       dovecot_ssl_chain: "{{ openssl_server_crt }}"
@@ -32,6 +32,6 @@ molecule:
       postfix_ssl_chain: "{{ openssl_server_crt }}"
   requirements:
     roles_extra:
-      - cron
-      - openssl
-      - postfix
+      - deitkrachten.cron
+      - deitkrachten.openssl
+      - deitkrachten.postfix
