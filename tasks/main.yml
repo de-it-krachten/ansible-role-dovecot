@@ -30,6 +30,7 @@
 
 - name: Create dh2048.pem
   ansible.builtin.command: openssl dhparam -out {{ dovecot_conf_dir }}/dh2048.pem 2048
+  changed_when: true
   when: not dh2048.stat.exists
 
 - name: Configuring dovecot configuration (delete lines)
