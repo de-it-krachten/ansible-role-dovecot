@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.3.0...v1.4.0) (2023-05-06)
+
+
+### Features
+
+* Move to namespaced role names ([1551647](https://github.com/de-it-krachten/ansible-role-dovecot/commit/15516476a65632aeb719f82bff2fcae83d9cc8f8))
+
 # [1.3.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.2.0...v1.3.0) (2022-10-12)
 
 
