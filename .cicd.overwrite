@@ -8,10 +8,10 @@ generic:
     Installs & configures Dovecot
 
 platforms:
-  fedora36:
+  fedora38:
     ci: false
     supported: false
-  fedora37:
+  fedora38:
     ci: false
     supported: false
 
