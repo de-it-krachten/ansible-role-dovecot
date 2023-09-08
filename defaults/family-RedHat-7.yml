@@ -1,0 +1,16 @@
+---
+
+dovecot_packages:
+  - dovecot
+  - dovecot-pigeonhole
+  - mailx
+
+dovecot_settings_os_specific:
+  ssl_protocols:
+    path: "{{ dovecot_confd_dir }}/10-ssl.conf"
+    var: 'ssl_protocols'
+    value: '!SSLv2 !SSLv3 !TLSv1 !TLSv1.1'
+  ssl_min_protocol:
+    path: "{{ dovecot_confd_dir }}/10-ssl.conf"
+    var: 'ssl_min_protocol'
+    state: absent

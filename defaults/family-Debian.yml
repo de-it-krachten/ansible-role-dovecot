@@ -1,0 +1,8 @@
+---
+
+dovecot_packages:
+  - dovecot-imapd
+  - dovecot-sieve
+  - dovecot-managesieved
+  - dovecot-lmtpd
+  - mailutils
