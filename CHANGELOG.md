@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.4.0...v1.5.0) (2023-09-08)
+
+
+### Bug Fixes
+
+* Remove initial support for SLES/OpenSUSE ([ef36ccf](https://github.com/de-it-krachten/ansible-role-dovecot/commit/ef36ccffb5bef78a0d23d643252441a27e7b0a00))
+
+
+### Features
+
+* Update supported platforms & CI ([44c0b9a](https://github.com/de-it-krachten/ansible-role-dovecot/commit/44c0b9a9740895ef5b5a1516e9bf0b3eecb1a40c))
+
 # [1.4.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.3.0...v1.4.0) (2023-05-06)
 
 
