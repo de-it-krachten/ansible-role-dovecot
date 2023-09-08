@@ -1,0 +1,11 @@
+---
+
+- name: Install packages
+  ansible.builtin.package:
+    name: "{{ dovecot_packages }}"
+    state: present
+
+- name: Start service
+  ansible.builtin.service:
+    name: "{{ dovecot_service }}"
+    enabled: yes

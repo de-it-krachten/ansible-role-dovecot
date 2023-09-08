@@ -1,5 +1,17 @@
 ---
 
+# Default config locations
+dovecot_conf_dir: /etc/dovecot
+dovecot_confd_dir: "{{ dovecot_conf_dir }}/conf.d"
+dovecot_config: "{{ dovecot_conf_dir }}/dovecot.conf"
+
+# Dovecot services
+dovecot_service: dovecot
+
+# Firewall ports
+dovecot_fw_ports:
+  - { port: 993, proto: tcp }
+
 # delivery agent to use
 dovecot_lmtp: true
 dovecot_lda: false
@@ -78,6 +90,10 @@ dovecot_settings:
       - 'AES256-SHA'
       - 'CAMELLIA128-SHA'
       - 'AES128-SHA'
+  ssl_dh_parameters_length:
+    path: "{{ dovecot_confd_dir }}/10-ssl.conf"
+    var: ssl_dh_parameters_length
+    value: "2048"
   postmaster_address:
     path: "{{ dovecot_confd_dir }}/15-lda.conf"
     var: 'postmaster_address'
@@ -92,4 +108,5 @@ dovecot_settings:
     value: 'yes'
 
 # Diffentiation from defaults
+dovecot_settings_os_specific: {}
 dovecot_settings_overwrite: {}
