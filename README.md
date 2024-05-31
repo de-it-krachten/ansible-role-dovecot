@@ -13,7 +13,7 @@ Installs & configures Dovecot
 None
 
 #### Collections
-- community.general
+None
 
 ## Platforms
 
@@ -30,11 +30,11 @@ Supported platforms
 - AlmaLinux 8
 - AlmaLinux 9
 - SUSE Linux Enterprise 15<sup>1</sup>
-- Debian 10 (Buster)<sup>1</sup>
 - Debian 11 (Bullseye)
 - Debian 12 (Bookworm)
 - Ubuntu 20.04 LTS
 - Ubuntu 22.04 LTS
+- Ubuntu 24.04 LTS
 
 Note:
 <sup>1</sup> : no automated testing is performed on these platforms
@@ -164,22 +164,6 @@ dovecot_packages:
   - mailutils
 </pre></code>
 
-### defaults/family-RedHat-9.yml
-<pre><code>
-dovecot_packages:
-  - dovecot
-  - dovecot-pigeonhole
-  - s-nail
-</pre></code>
-
-### defaults/family-RedHat-8.yml
-<pre><code>
-dovecot_packages:
-  - dovecot
-  - dovecot-pigeonhole
-  - mailx
-</pre></code>
-
 ### defaults/family-RedHat-7.yml
 <pre><code>
 dovecot_packages:
@@ -198,6 +182,22 @@ dovecot_settings_os_specific:
     state: absent
 </pre></code>
 
+### defaults/family-RedHat-8.yml
+<pre><code>
+dovecot_packages:
+  - dovecot
+  - dovecot-pigeonhole
+  - mailx
+</pre></code>
+
+### defaults/family-RedHat-9.yml
+<pre><code>
+dovecot_packages:
+  - dovecot
+  - dovecot-pigeonhole
+  - s-nail
+</pre></code>
+
 
 
 
@@ -206,16 +206,16 @@ dovecot_settings_os_specific:
 <pre><code>
 - name: sample playbook for role 'dovecot'
   hosts: all
-  become: "yes"
+  become: 'yes'
   vars:
-    dovecot_ssl_key: "{{ openssl_server_key }}"
-    dovecot_ssl_chain: "{{ openssl_server_crt }}"
+    dovecot_ssl_key: '{{ openssl_server_key }}'
+    dovecot_ssl_chain: '{{ openssl_server_crt }}'
     dovecot_domain: example.com
-    postfix_ipv6: False
+    postfix_ipv6: false
     postfix_domain: example.com
     postfix_fqdn: host.example.com
-    postfix_ssl_key: "{{ openssl_server_key }}"
-    postfix_ssl_chain: "{{ openssl_server_crt }}"
+    postfix_ssl_key: '{{ openssl_server_key }}'
+    postfix_ssl_chain: '{{ openssl_server_crt }}'
   roles:
     - deitkrachten.cron
     - deitkrachten.openssl
