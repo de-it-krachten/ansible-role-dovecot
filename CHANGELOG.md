@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.5.0...v1.6.0) (2024-06-01)
+
+
+### Features
+
+* Add support for Ubuntu 24.04 LTS + Fedora 40 ([26cee06](https://github.com/de-it-krachten/ansible-role-dovecot/commit/26cee06734dd2e3ae3ccdad7f63cb99fb31dd456))
+
 # [1.5.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.4.0...v1.5.0) (2023-09-08)
 
 
