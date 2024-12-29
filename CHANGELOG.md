@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.6.0...v1.7.0) (2024-12-29)
+
+
+### Features
+
+* Update supported platforms & CI ([21d4017](https://github.com/de-it-krachten/ansible-role-dovecot/commit/21d4017230766f83583d7758eeba57070ce234d4))
+
 # [1.6.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.5.0...v1.6.0) (2024-06-01)
 
 
