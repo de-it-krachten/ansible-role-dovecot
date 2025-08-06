@@ -11,6 +11,9 @@ platforms:
   opensuse15:
     ci: false
     supported: false
+  debian13:
+    ci: false
+    supported: false
   fedora41:
     ci: false
     supported: false

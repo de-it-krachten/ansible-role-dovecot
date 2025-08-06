@@ -80,7 +80,7 @@
   ci: true
   image: docker.io/geerlingguy/docker-debian12-ansible:latest
 - name: debian13
-  ci: true
+  ci: false
   image: docker.io/geerlingguy/docker-debian13-ansible:latest
 - name: ubuntu1804
   ci: false

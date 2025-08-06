@@ -34,7 +34,6 @@ Supported platforms
 - SUSE Linux Enterprise 15<sup>1</sup>
 - Debian 11 (Bullseye)
 - Debian 12 (Bookworm)
-- Debian 13 (Trixie)
 - Ubuntu 20.04 LTS
 - Ubuntu 22.04 LTS
 - Ubuntu 24.04 LTS
