@@ -21,12 +21,16 @@ Supported platforms
 
 - Red Hat Enterprise Linux 8<sup>1</sup>
 - Red Hat Enterprise Linux 9<sup>1</sup>
+- Red Hat Enterprise Linux 10<sup>1</sup>
 - RockyLinux 8
 - RockyLinux 9
+- RockyLinux 10
 - OracleLinux 8
 - OracleLinux 9
+- OracleLinux 10
 - AlmaLinux 8
 - AlmaLinux 9
+- AlmaLinux 10
 - SUSE Linux Enterprise 15<sup>1</sup>
 - Debian 11 (Bullseye)
 - Debian 12 (Bookworm)
@@ -160,6 +164,14 @@ dovecot_packages:
   - dovecot-managesieved
   - dovecot-lmtpd
   - mailutils
+</pre></code>
+
+### defaults/family-RedHat-10.yml
+<pre><code>
+dovecot_packages:
+  - dovecot
+  - dovecot-pigeonhole
+  - s-nail
 </pre></code>
 
 ### defaults/family-RedHat-7.yml
