@@ -1,3 +1,13 @@
+# [1.8.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.7.0...v1.8.0) (2025-08-07)
+
+
+### Features
+
+* Add support for AlmaLinux 10 ([99b9e2f](https://github.com/de-it-krachten/ansible-role-dovecot/commit/99b9e2f8beaeb93d4fcd1c110324dc6af1060498))
+* Add support for OracleLinux 10 ([86b9d11](https://github.com/de-it-krachten/ansible-role-dovecot/commit/86b9d11d330e8ad96a0d7f18460d2e55aa8764e8))
+* Add support for Red Hat Enterprise Linux 10 ([63609a7](https://github.com/de-it-krachten/ansible-role-dovecot/commit/63609a7fc228e52662d0dd1dd79f4f584fe5efab))
+* Add support for RockyLinux 10 ([3fc6e43](https://github.com/de-it-krachten/ansible-role-dovecot/commit/3fc6e43694e3d359aa258d9c450a3529970a999e))
+
 # [1.7.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.6.0...v1.7.0) (2024-12-29)
 
 
