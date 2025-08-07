@@ -1,0 +1,6 @@
+---
+
+dovecot_packages:
+  - dovecot
+  - dovecot-pigeonhole
+  - s-nail

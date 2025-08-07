@@ -166,6 +166,14 @@ dovecot_packages:
   - mailutils
 </pre></code>
 
+### defaults/family-RedHat-10.yml
+<pre><code>
+dovecot_packages:
+  - dovecot
+  - dovecot-pigeonhole
+  - s-nail
+</pre></code>
+
 ### defaults/family-RedHat-7.yml
 <pre><code>
 dovecot_packages:
