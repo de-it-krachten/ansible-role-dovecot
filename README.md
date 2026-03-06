@@ -32,6 +32,7 @@ Supported platforms
 - AlmaLinux 9
 - AlmaLinux 10
 - SUSE Linux Enterprise 15<sup>1</sup>
+- SUSE Linux Enterprise 16<sup>1</sup>
 - Debian 11 (Bullseye)
 - Debian 12 (Bookworm)
 - Ubuntu 20.04 LTS
@@ -40,6 +41,7 @@ Supported platforms
 
 Note:
 <sup>1</sup> : no automated testing is performed on these platforms
+
 
 ## Role Variables
 ### defaults/main.yml
@@ -218,6 +220,7 @@ dovecot_packages:
   hosts: all
   become: 'yes'
   vars:
+    molecule_driver: '{{ lookup(''env'', ''MOLECULE_DRIVER_NAME'') }}'
     dovecot_ssl_key: '{{ openssl_server_key }}'
     dovecot_ssl_chain: '{{ openssl_server_crt }}'
     dovecot_domain: example.com

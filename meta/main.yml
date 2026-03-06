@@ -14,7 +14,7 @@ galaxy_info:
         - '8'
         - '9'
         - '10'
-    - name: opensuse
+    - name: SLES
       versions:
         - all
     - name: Debian

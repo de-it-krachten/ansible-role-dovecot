@@ -4,6 +4,7 @@
   hosts: all
   become: "yes"
   vars:
+    molecule_driver: "{{ lookup('env', 'MOLECULE_DRIVER_NAME') }}"
     dovecot_ssl_key: "{{ openssl_server_key }}"
     dovecot_ssl_chain: "{{ openssl_server_crt }}"
     dovecot_domain: example.com
