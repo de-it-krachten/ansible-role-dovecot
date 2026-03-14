@@ -1,3 +1,12 @@
+# [1.9.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.8.0...v1.9.0) (2026-03-14)
+
+
+### Features
+
+* Added support for SUSE Linux Enterprise 16 ([3eb38c7](https://github.com/de-it-krachten/ansible-role-dovecot/commit/3eb38c771c00234009d27d3a186c6c05046cb5c7))
+* Drop support for SUSE Linux Enterprise 15 ([2b754ae](https://github.com/de-it-krachten/ansible-role-dovecot/commit/2b754ae0a5cc50c5f2e3d1772679b4370c6a98d7))
+* Drop support for SUSE Linux Enterprise 16 ([54c8982](https://github.com/de-it-krachten/ansible-role-dovecot/commit/54c8982cd2f8528e929e8db31b06b63e169a4ef6))
+
 # [1.8.0](https://github.com/de-it-krachten/ansible-role-dovecot/compare/v1.7.0...v1.8.0) (2025-08-07)
 
 
